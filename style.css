@@ -1,180 +1,192 @@
-.wrapper{
+@font-face {
+    font-family: "Inter";
+    src: url(/todo/fonts/Inter.ttf) format(ttf);
+    src: url(/todo/fonts/Inter.woff) format(woff);
+    src: url(/todo/fonts/Inter.woff2) format(woff2);
+}
+
+.wrapper {
     display: flex;
     align-items: center;
-    margin: 0 auto;
+    justify-content: center;
+    min-height: 100vh;
     width: 100%;
-    height: 100%;
     background-color: #020631;
-    overflow: hidden;
+    overflow-x: hidden;
+    padding: 20px 16px 40px;
 }
-.container{
+
+.container {
+    width: 100%;
     max-width: 900px;
-    max-height: 800px;
-    margin: 0 auto;
-    justify-self: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
-#title{
-    font-size: 40px;
+
+#logo {
+    display: block;
+    width: clamp(80px, 12vw, 120px);
+    margin: clamp(16px, 4vw, 40px) auto 0;
+}
+
+#title {
+    font-size: clamp(30px, 4vw, 40px);
     color: white;
-    margin: 30px 0px 30px 0px;
+    margin: clamp(16px, 3vw, 30px) 0;
     text-align: center;
     font-family: "Inter", sans-serif;
     font-weight: 600;
+    line-height: 1.3;
+    padding: 0 8px;
 }
 
-/* -------------------------------------------------------------- */
-
-#input{
-    padding: 0 40px;
-    border-radius: 15px;
-    width: 450px;
-    height: 50px;
-    background-color: #ffffff;
-    margin: 30px auto 30px auto;
-    font-size: 20px;
-    font-family: "Inter", sans-serif;
-    font-weight: 600;
-}
-.input__box{
+.input__box {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    width: 100%;
 }
-#input__img{
+
+#input {
+    padding: 0 56px 0 20px;
+    border-radius: 15px;
+    width: min(450px, calc(100vw - 32px));
+    min-height: 50px;
+    background-color: #ffffff;
+    margin: clamp(16px, 3vw, 30px) auto;
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+}
+
+#input__img {
     position: absolute;
-    top: 25px;
-    right: 58px;
-    font-size: 50px;
+    top: 50%;
+    right: calc(50% - min(450px, calc(100vw - 32px)) / 2 + 8px);
+    transform: translateY(-52%);
+    font-size: clamp(36px, 5vw, 50px);
     font-family: "Inter", sans-serif;
     opacity: 0.5;
     font-weight: 600;
     z-index: 1;
+    line-height: 1;
 }
-#input__img:hover{
-    transform: scale(1.2);
+
+#input__img:hover {
+    transform: translateY(-52%) scale(1.2);
     transition: 150ms;
 }
-.input__button{  
+
+.input__button {
     background: none;
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
     position: absolute;
-    top: 37px;
-    right: 59px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: calc(50% - min(450px, calc(100vw - 32px)) / 2 + 6px);
     z-index: 3;
 }
-/* -------------------------------------------------------------------- */
 
-#logo{
-    display: flex;
-    width: 19%;
-    margin: 0 auto 0 auto;
-}
-@font-face {
-    font-family: "Inter";
-    src: url(/2026/todo/fonts/Inter.ttf) format(ttf);
-    src: url(/2026/todo/fonts/Inter.woff) format(woff);
-    src: url(/2026/todo/fonts/Inter.woff2) format(woff2);
+.tasks__container {
+    width: 100%;
 }
 
-.tasks__container{
-    height: fit-content;    
-}
-.tasks__list{
-    width: fit-content;
-    height: fit-content;
+.tasks__list {
+    width: 100%;
+    max-width: 450px;
     margin: 0 auto;
+    box-sizing: border-box;
 }
-.tasks__item{
-    width: 450px;
-    height: 50px;
+
+.tasks__item {
+    width: 100%;
+    min-height: 50px;
     align-content: center;
-    padding: 0 60px;
+    padding: 12px 44px 12px 40px;
     position: relative;
     border-radius: 15px;
     background-color: #ffffff;
-    align-self: center;
-    font-size: 20px;
+    font-size: clamp(15px, 2.2vw, 20px);
     font-family: "Inter", sans-serif;
     font-weight: 600;
-    margin: 20px auto 20px auto;
+    margin: clamp(10px, 2vw, 20px) auto;
+    word-break: break-word;
 }
-.tasks__item2{
-    width: 450px;
-    height: 50px;
+
+.tasks__item2 {
+    width: 100%;
+    min-height: 50px;
     align-content: center;
-    padding: 0 60px;
+    padding: 12px 44px 12px 40px;
     position: relative;
     border-radius: 15px;
-    align-self: center;
-    font-size: 20px;
+    font-size: clamp(15px, 2.2vw, 20px);
     font-family: "Inter", sans-serif;
     font-weight: 600;
-    margin: 20px auto 20px auto;
+    margin: clamp(10px, 2vw, 20px) auto;
+    word-break: break-word;
     animation: NewTasksItem 250ms;
     animation-direction: alternate-reverse;
     background-color: #5737E3;
     text-decoration: line-through;
-    color: white
+    color: white;
 }
 
-.errortext{
+.errortext {
     color: rgb(255, 0, 0);
     font-family: "Inter", sans-serif;
     opacity: 0.5;
     font-weight: 600;
-    font-size: medium;
-}
-
-@keyframes NewTasksItem{
-    0%{
-        transform: scale(1);
-    }
-    100%{
-        transform:scale(1.2)
-    }
+    font-size: clamp(12px, 2vw, 14px);
+    text-align: center;
+    padding: 4px 0;
 }
 
 .remove__btn {
     position: absolute;
-    right: 25px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
     transition: 0.2s;
     opacity: 0;
+    font-size: 16px;
 }
-.remove__btn:hover{
+
+.remove__btn:hover {
     transform: translateY(-50%) scale(1.2);
     transition: 150ms;
     opacity: 1;
 }
-.tasks__item:hover{
-    .remove__btn {
-        opacity: 0.5;
-    }
-    .complete__btn {
-        opacity: 1;
-    }
+
+.tasks__item:hover .remove__btn {
+    opacity: 0.5;
+}
+
+.tasks__item:hover .complete__btn {
+    opacity: 1;
 }
 
 .complete__btn {
     position: absolute;
-    right: 400px;
+    left: 12px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
     opacity: 0;
     width: 20px;
     height: 20px;
+    min-height: unset;
+    max-width: unset;
     transition: 0.2s;
 }
+
 .complete__btn2 {
     position: absolute;
-    right: 400px;
+    left: 12px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -183,24 +195,48 @@
     height: 20px;
     transition: 0.2s;
 }
-.complete__btn:hover{
+
+.complete__btn:hover {
     transform: translateY(-50%) scale(1.2);
     transition: 150ms;
     opacity: 1;
 }
-.complete__btn2:hover{
+
+.complete__btn2:hover {
     transform: translateY(-50%) scale(1.2);
     transition: 150ms;
     opacity: 1;
+}
+
+@media (hover: none) {
+    .remove__btn {
+        opacity: 0.4;
+    }
+
+    .complete__btn {
+        opacity: 0.4;
+    }
+}
+
+@keyframes NewTasksItem {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
 }
 
 @keyframes removeAnimation {
     0% {
         transform: translateX(0%);
     }
+
     40% {
         transform: translateX(12%);
     }
+
     100% {
         transform: translateX(-299%);
     }
@@ -216,6 +252,7 @@
         transform: rotateX(0deg);
         opacity: 0;
     }
+
     100% {
         transform: rotateX(360deg);
         opacity: 1;

@@ -8,7 +8,7 @@ let errorText = document.createElement('h1')
 
 
 inputButton.addEventListener('click', function(event){
-    if (!input.value == ''){
+    if (input.value.trim() !== ''){
         errorText.remove()
 
         let newTask = document.createElement('li')   
@@ -49,3 +49,4 @@ inputButton.addEventListener('click', function(event){
     }
 })
 
+console.log('something')
